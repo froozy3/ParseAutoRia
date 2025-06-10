@@ -267,16 +267,16 @@ async def main_scrape():
     )
 
 
-if __name__ == "__main__":
-    # Setup logging
-    setup_logging()
+# if __name__ == "__main__":
+#     # Setup logging
+#     setup_logging()
 
-    # Create dumps directory if it doesn't exist
-    os.makedirs("dumps", exist_ok=True)
+#     # Create dumps directory if it doesn't exist
+#     os.makedirs("dumps", exist_ok=True)
 
-    # Run the scraper
-    async def run():
-        await init_db()  # Initialize database
-        await main_scrape()
+#     # Run the scraper
+#     async def run():
+#         await init_db()  # Initialize database
+#         await main_scrape()
 
-    asyncio.run(run())
+#     asyncio.run(run())
