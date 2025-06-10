@@ -68,14 +68,14 @@ mkdir dumps
 5. Configure environment variables in `.env`
 
 6. Run the scheduler or just script:
-SCHEDULER:
-```bash
-python scheduler.py
-```
-SCRIPT 
-```bash
-python scraper.py
-```
+    SCHEDULER:
+    ```bash
+    python scheduler.py
+    ```
+    SCRIPT 
+    ```bash
+    python scraper.py
+    ```
 
 ## Project Structure
 
