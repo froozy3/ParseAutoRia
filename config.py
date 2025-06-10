@@ -1,5 +1,4 @@
 from pydantic_settings import BaseSettings
-from typing import Optional
 
 
 class Settings(BaseSettings):
@@ -18,10 +17,11 @@ class Settings(BaseSettings):
 
     # Scheduler settings
     SCRAPE_HOUR: int  # Hour of the day to run the scraping job
-    SCRAPE_MINUTE: int   # Minute of the hour to run the scraping job
+    SCRAPE_MINUTE: int  # Minute of the hour to run the scraping job
     # Dump settings
-    DUMP_HOUR: int   # Hour of the day to perform the database dump
-    DUMP_MINUTE: int   # Minute of the hour to perform the database dump
+    DUMP_HOUR: int  # Hour of the day to perform the database dump
+    DUMP_MINUTE: int  # Minute of the hour to perform the database dump
+    DUMPS_DIR: str = "dumps"  # Directory to save database dumps
 
     # Performance settings
     MAX_CONCURRENT_REQUESTS: int = 20  # Maximum number of concurrent requests
@@ -29,7 +29,6 @@ class Settings(BaseSettings):
     REQUEST_TIMEOUT: int = 10  # Timeout for HTTP requests in seconds
 
     # JSON settings
-    DUMPS_DIR: str = "dumps"  # Directory to save JSON dumps
     SAVE_TO_JSON: bool = True  # Whether to save scraped data to JSON
     JSON_INDENT: int = 2  # Indentation level for JSON formatting
     SAVE_TO_DB: bool = True  # Whether to save scraped data to the database

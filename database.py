@@ -65,16 +65,13 @@ async def car_exists(url: str) -> bool:
 
 
 async def dump_database():
-    """Создание резервной копии базы данных"""
+    """Create a backup of the database using pg_dump."""
     try:
-        # Создаем папку для бэкапов если её нет
         backup_dir = "database_backups"
         os.makedirs(backup_dir, exist_ok=True)
 
-        # Формируем имя файла с текущей датой
         filename = f"{backup_dir}/backup_{datetime.now():%Y%m%d_%H%M}.sql"
 
-        # Выполняем бэкап через pg_dump
         command = [
             "pg_dump",
             "-h",
@@ -88,7 +85,7 @@ async def dump_database():
         ]
 
         subprocess.run(command, check=True)
-        logger.info(f"Создан бэкап базы данных: {filename}")
+        logger.info(f"Backup created successfully: {filename}")
 
     except Exception as e:
-        logger.error(f"Ошибка при создании бэкапа: {e}")
+        logger.error(f"Error creating database backup: {str(e)}")

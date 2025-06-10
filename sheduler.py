@@ -11,6 +11,16 @@ from scraper import main_scrape
 logger = logging.getLogger(__name__)
 
 
+async def perform_dump():
+    """Perform database dump."""
+    logger.info("Starting database dump")
+    try:
+        await dump_database()
+        logger.info("Database dump completed successfully")
+    except Exception as e:
+        logger.error(f"Error during database dump: {str(e)}", exc_info=True)
+
+
 async def schedule_scraping():
     """Perform daily scraping and database dump."""
     logger.info("Starting scheduled scraping")
@@ -50,6 +60,14 @@ async def main():
             schedule_scraping,
             CronTrigger(hour=settings.SCRAPE_HOUR, minute=settings.SCRAPE_MINUTE),
             name="scraping_job",
+            replace_existing=True,
+            misfire_grace_time=None,  # Allow job to run even if missed
+        )
+
+        scheduler.add_job(
+            perform_dump,
+            CronTrigger(hour=settings.DUMP_HOUR, minute=settings.DUMP_MINUTE),
+            name="dump_job",
             replace_existing=True,
             misfire_grace_time=None,  # Allow job to run even if missed
         )
