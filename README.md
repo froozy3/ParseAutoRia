@@ -25,7 +25,7 @@ cd ParseAutoRia
 POSTGRES_DB=autoria
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
-DB_HOST=db
+DB_HOST=localhost
 DB_PORT=5432
 
 # Scheduler settings
